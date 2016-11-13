@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Lappy',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Lappy\Providers\AppServiceProvider::class,
+        Lappy\Providers\AuthServiceProvider::class,
+        // Lappy\Providers\BroadcastServiceProvider::class,
+        Lappy\Providers\EventServiceProvider::class,
+        Lappy\Providers\RouteServiceProvider::class,
 
     ],
 
