@@ -6,7 +6,7 @@ Welcome
 
 
 @section('content')
-Welcome to AdMob
+Welcome to Yodlee AdMob
 @endsection
 
 
