@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2016 at 06:56 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Nov 24, 2016 at 01:14 PM
+-- Server version: 5.7.13-log
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,54 @@ SET time_zone = "+00:00";
 --
 -- Database: `admob`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ad_info`
+--
+
+CREATE TABLE `ad_info` (
+  `ad_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `merchant_id` int(11) NOT NULL,
+  `location_zip` int(11) NOT NULL,
+  `ad_link_key` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_user`
+--
+
+CREATE TABLE `category_user` (
+  `user_id` int(11) NOT NULL,
+  `category_list` text NOT NULL,
+  `merchant_list` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `merchant`
+--
+
+CREATE TABLE `merchant` (
+  `merchant_id` int(11) NOT NULL,
+  `merchant_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -62,6 +110,18 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `recurring_category`
+--
+
+CREATE TABLE `recurring_category` (
+  `user_id` int(11) NOT NULL,
+  `category_list` text NOT NULL,
+  `merchant_list` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -86,6 +146,31 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ad_info`
+--
+ALTER TABLE `ad_info`
+  ADD KEY `fk_category` (`category_id`),
+  ADD KEY `fk_merchant` (`merchant_id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `category_user`
+--
+ALTER TABLE `category_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `merchant`
+--
+ALTER TABLE `merchant`
+  ADD PRIMARY KEY (`merchant_id`);
 
 --
 -- Indexes for table `migrations`
@@ -121,6 +206,17 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ad_info`
+--
+ALTER TABLE `ad_info`
+  ADD CONSTRAINT `fk_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+  ADD CONSTRAINT `fk_merchant` FOREIGN KEY (`merchant_id`) REFERENCES `merchant` (`merchant_id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
