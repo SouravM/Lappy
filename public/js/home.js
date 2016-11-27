@@ -2,6 +2,18 @@ $(document).ready(function(){
 
     $('#myModal').modal('show');
 
+    var instance = $('#myModal').open();
+
+    instance.result.then(function(){
+        //Get triggers when modal is closed
+    }, function(){
+        //gets triggers when modal is dismissed.
+        toggleVideo('hide');
+    });
+
+
+
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
@@ -10,6 +22,19 @@ $(document).ready(function(){
 
 
 });
+
+function toggleVideo(state) {
+    // if state == 'hide', hide. Else: show video
+    var div = document.getElementById("myModal");
+    var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
+    div.style.display = state == 'hide' ? 'none' : '';
+    func = state == 'hide' ? 'pauseVideo' : 'playVideo';
+    iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
+}
+
+
+
+
 
 function showPosition(position) {
     console.log(position.coords.latitude);
