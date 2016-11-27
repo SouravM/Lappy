@@ -5862,7 +5862,7 @@ button.close {
 }
 .modal-content {
     position: relative;
-    background-color: #fff;
+    background-color: #000000;
     border: 1px solid #999;
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 6px;
@@ -5883,8 +5883,8 @@ button.close {
     filter: alpha(opacity=50)
 }
 .modal-header {
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5
+    padding: 0px;
+    
 }
 .modal-header .close {
     margin-top: -2px
@@ -5922,7 +5922,7 @@ button.close {
 @media (min-width: 768px) {
     .modal-dialog {
         width: 600px;
-        margin: 140px auto
+        margin: 200px auto
     }
     .modal-content {
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5)

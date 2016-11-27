@@ -24,7 +24,7 @@
 
             </div>
             <div class="modal-body">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Wo6BkRgvYF8?autoplay=1&color=white&modestbranding=1&showinfo=0&loop=0&controls=0&disablekb=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe width="567" height="355" src="https://www.youtube.com/embed/Wo6BkRgvYF8?autoplay=1&color=white&modestbranding=1&showinfo=0&loop=0&controls=0&disablekb=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
             </div>
 
         </div>
