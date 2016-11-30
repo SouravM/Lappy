@@ -2,23 +2,17 @@ $(document).ready(function(){
 
     $('#myModal').modal('show');
 
-    var instance = $('#myModal').open();
+    document.getElementById("myFrame").src = link;
 
-    instance.result.then(function(){
-        //Get triggers when modal is closed
-    }, function(){
-        //gets triggers when modal is dismissed.
-        toggleVideo('hide');
-    });
-
-
-
+    console.log(link);
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
         console.log("Geolocation is not supported by this browser.");
     }
+
+
 
 
 });
@@ -74,4 +68,6 @@ function showError(error) {
             console.log("An unknown error occurred.");
             break;
     }
+
+
 }
