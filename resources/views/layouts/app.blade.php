@@ -13,8 +13,10 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
-    <!-- Scripts -->
 
+
+    <!-- Scripts -->
+    <script src="/js/Chart.js" type="text/javascript"></script>
 
     <!-- Vector background -->
     <style>

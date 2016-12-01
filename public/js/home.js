@@ -11,11 +11,157 @@ $(document).ready(function(){
     } else {
         console.log("Geolocation is not supported by this browser.");
     }
-
+    createTable();
+    showchart();
 
 
 
 });
+
+
+function showchart(){
+    //labels for chart
+    var labels_for_chart=[];
+    var string_labels_for_chart= [];
+    string_labels_for_chart =  document.getElementById("categoryList").value.split(',');
+    for(var index in string_labels_for_chart)
+    {
+        labels_for_chart.push(string_labels_for_chart[index]);
+    }
+    // console.log(labels_for_chart);
+
+    //data for chart
+    var data_for_chart=[];
+    var string_data_for_chart=[];
+    string_data_for_chart = document.getElementById("amountList").value.split(',');
+    for(var i = 0; i <string_data_for_chart.length;i++)
+    {
+        data_for_chart.push(parseInt(string_data_for_chart[i]));
+    }
+    // console.log(data_for_chart);
+
+    //console.log(data_for_chart);
+    var draw_pieChart = document.getElementById("myChart");
+    //console.log(draw_pieChart);
+    var pieData = {
+        labels: labels_for_chart ,
+        datasets:[
+            {
+                data : data_for_chart,
+                backgroundColor: [
+                    "#1ABC9C",
+                    "#F52609",
+                    "#097BF5",
+                    "#09F566",
+                    "#F509F1",
+                    "#F5F509",
+                    "#F50971",
+                    "#9FF509",
+                    "#F5A309",
+                    "#D1F2EB"
+
+                ]
+
+            }
+        ]
+
+
+    };
+
+    var mychart = new Chart(draw_pieChart,{
+        type: 'pie',
+        data:pieData,
+        options: {
+            title: {
+                display: true,
+                text: 'Where you spend the most'
+            }}
+
+
+    });
+
+
+
+    document.getElementById("myChart").onclick = function(evt)
+    {
+        var activePoints = mychart.getElementAtEvent(evt);
+
+
+        //get the internal index of slice in pie chart
+        var clickedElementindex = activePoints[0]["_index"];
+
+        //console.log(clickedElementindex);
+
+        var chosen_category = mychart.data.labels[clickedElementindex];
+
+        // console.log("chosen category  is"+ mychart.data.labels[clickedElementindex]);
+
+        //console.log(document.getElementById("merchantCategoryList").value);
+        var merchantCategoryList = document.getElementById("merchantCategoryList").value.split('/');
+        var array_fav_merchants=[];
+        // console.log(label1==label,typeof(label));
+        for(var i in merchantCategoryList)
+        {
+            //  console.log(merchantCategoryList);
+            var category= merchantCategoryList[i].split('@')[0].trim();
+            if(chosen_category.trim()==category){
+                array_fav_merchants.push( merchantCategoryList[i].split('@')[1]);
+                // console.log((merchantCategoryList[i].split('@')[1]));
+
+            }
+            // console.log((merchantCategoryList[i].split('@')[1]));
+        }
+        document.getElementById("myMerchant").innerHTML= array_fav_merchants.toString();
+        document.getElementById("merchants").innerHTML= "Your favourite merchants for "+ chosen_category;
+    }
+
+
+
+
+
+
+}
+
+function createTable() {
+    var table = document.createElement('table');
+    table.setAttribute('class','table table-bordered table table-striped table table-hover');
+    table.setAttribute('id','myTable')
+
+
+// Create an empty <tr> element and add it to the 1st position of the table:
+    var row = table.insertRow(0);
+
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+
+// Add some text to the new cells:
+    cell1.innerHTML = "Category";
+    cell2.innerHTML = "Expected Date";
+    var index_outer=1;
+    // console.log(document.getElementById("recurring_category_dates").value);
+    for(var i = 0;i< document.getElementById("recurring_category_List").value.split(',').length  ;i++)
+    {
+        var row = table.insertRow(index_outer);
+
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+
+        cell1.innerHTML = String(document.getElementById("recurring_category_List").value.split(',')[i]);
+        cell2.innerHTML = String(document.getElementById("recurring_category_dates").value.split(',')[i]);
+
+
+    }
+
+    document.getElementById("myTable").appendChild(table);
+
+}
+
+
+
 
 function toggleVideo(state) {
     // if state == 'hide', hide. Else: show video

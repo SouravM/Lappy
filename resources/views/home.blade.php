@@ -9,6 +9,41 @@
 
                 <div class="panel-body">
 
+                    <h3 class="text-center text-danger">
+                        Hi {{$name}} , Your transactions say a lot about you
+                    </h3>
+
+                    <ul class="list-group">
+                        <li class="list-group-item text-center text-primary">  They tell the categories where you spend the most</li>
+                        <li class="list-group-item text-center text-primary">Your favourite merchants, your frequent purchases and a lot more</li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <canvas   id="myChart" width="50" height="50">
+
+                            </canvas>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="text-info text-center" id="merchants"></h4>
+                                <h4 class="text-center text-info" id="myMerchant"></h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-4">
+
+                                <table id="myTable">
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -29,8 +64,18 @@
 
         </div>
 
+        <input type="hidden" id="amountList" value="{{$categoryAmountList}}">
+        <input type="hidden" id="categoryList" value="{{$categoryList}}">
+        <input type="hidden" id="merchantCategoryList" value="{{$merchantCategoryList}}">
+        <input type="hidden" id="recurring_category_List" value="{{$recurring_category_List}}">
+        <input type="hidden" id="recurring_category_dates" value="{{$recurring_category_dates}}">
+
+
     </div>
 </div>
+
+
+
 
 
 @endsection
