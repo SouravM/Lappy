@@ -6590,5 +6590,13 @@ button.close {
         display: none!important
     }
 }
-
+#dash
+{
+    margin-top: 10px !important;
+}
+#myChart
+{
+    height: 300px !important;
+    width:300px !important;
+}
 

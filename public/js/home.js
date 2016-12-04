@@ -49,16 +49,16 @@ function showchart(){
             {
                 data : data_for_chart,
                 backgroundColor: [
-                    "#1ABC9C",
-                    "#F52609",
-                    "#097BF5",
-                    "#09F566",
-                    "#F509F1",
-                    "#F5F509",
-                    "#F50971",
-                    "#9FF509",
-                    "#F5A309",
-                    "#D1F2EB"
+                    "#3F5D7D",
+                    "#279B61",
+                    "#008AB8",
+                    "#993333",
+                    "#A3E496",
+                    "#95CAE4",
+                    "#CC3333",
+                    "#FFCC33",
+                    "#FFFF7A",
+                    "#CC6699"
 
                 ]
 
@@ -69,7 +69,7 @@ function showchart(){
     };
 
     var mychart = new Chart(draw_pieChart,{
-        type: 'pie',
+        type: 'doughnut',
         data:pieData,
         options: {
             title: {

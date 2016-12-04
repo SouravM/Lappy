@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row" id="dash">
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+              
 
                 <div class="panel-body">
 
@@ -19,8 +19,8 @@
                     </ul>
 
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <canvas   id="myChart" width="50" height="50">
+                        <div class="col-sm-6 col-sm-offset-3" >
+                            <canvas   id="myChart" width="140" height="140">
 
                             </canvas>
                         </div>
@@ -62,7 +62,10 @@
                 <iframe id="myFrame" width="567" height="355" src="" frameborder="0" allowfullscreen></iframe>
             </div>
 
-        </div>
+       
+</div>
+
+ </div>
 
         <input type="hidden" id="amountList" value="{{$categoryAmountList}}">
         <input type="hidden" id="categoryList" value="{{$categoryList}}">
@@ -72,7 +75,6 @@
 
 
     </div>
-</div>
 
 
 
